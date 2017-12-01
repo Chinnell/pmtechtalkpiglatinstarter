@@ -10,7 +10,7 @@
 		// Displays the result to the screen
 $(document).ready(function() {
 	$(".btn").click(function(){
-		var input = $(".form-control").val();
+		var input = ($(".form-control").val()).toLowerCase();
 		var result = toPigLatinSentence(input);
    		$('.result-text').html("<h3>" + result + "</h3>");
     });
@@ -20,45 +20,45 @@ $(document).ready(function() {
 // Create the wordStartsWithVowel function that takes a word as a parameter
 	// This function should return true if the input word starts with a vowel, otherwise it should return false.
 function wordStartsWithVowel(word) {
-  	// var firstLetter = ;
+  	var firstLetter = word[0];
 	
-	//if(){
-	// 	return true;
-	// } else {
-	// 	return false;
-	//}
+	if(firstLetter==="a"||firstLetter==="e"||firstLetter==="i"||firstLetter==="o"||firstLetter==="u"){
+		console.log(true);
+	} else {
+		console.log(false);
+	}
 }
-
+console.log(wordStartsWithVowel("Hola"));
 // Create the wordStartsWithVowelTransformation function that takes a word as a parameter
 	// Appends "way" to the end of the word 
 function wordStartsWithVowelTransformation(word) {
 	//Declare a variable called newWord
-	
+	var newWord;
 	//Assign: newWord the value of  word + "ay"
-	
+	newWord = word + "ay";
 	//Add "ay" to the end of the word
-	
+	console.log(newWord);
 	// Retun the new word.
-	
+	return(newWord);
 }
 
 
 // Create the wordStartsWithConsonantTransformation function that takes a word as a parameter
 	// Moves the first consonant to the end of the word and appends "ay" to the end of the word
 function wordStartsWithConsonantTransformation(word) {
-//Declare a variable called newWord
-
-	
-//Declare a variable called firstLetter and assign it the value of the first letter of the word
-	
-//Declare a variable called lastLetters assign it the value of the last letters of the word
-	
-	
-//Reassign newWord the lastletters + firstLetter + "ay"
-
-//return the new word
-	
+	//Declare a variable called newWord
+	var newWord;
+		
+	//Declare a variable called firstLetter and assign it the value of the first letter of the word
+	var firstLetter = word.slice(0,1);
+	//Declare a variable called lastLetters assign it the value of the last letters of the word
+	var lastLetters = word.slice(1,word.length);
+	//Reassign newWord the lastletters + firstLetter + "ay"
+	newWord = lastLetters + firstLetter + "ay";
+	//return the new word
+	return newWord;
 }
+console.log(wordStartsWithConsonantTransformation("Hello"));
 
 
 // Create the toPigLatinWord function that takes a word as a parameter. 
@@ -66,7 +66,15 @@ function wordStartsWithConsonantTransformation(word) {
 	// Otherwise return the result of the wordStartsWithVowelTransformation. 
 
 function toPigLatinWord(word) {
-
+	var isVowel = wordStartsWithVowel(word);
+	
+	if(isVowel === true){
+		return wordStartsWithConsonantTransformation(word);
+	} else {
+		return wordStartsWithConsonantTransformation(word);
+	}
+	
+	return word;
 }
 
 
@@ -82,7 +90,9 @@ function toPigLatinSentence(sentence) {
 	//Declare an new variable called newArray.
 	
 	//Create a for loop that loops over each item in the sentenceArray
-	
+	for(i=0; i>sentenceArray.length; i=i+1){
+		
+	}
 		//For each word call pigLatinizeWord and push it into you new array
 	
 	//Join the array back into a string and return the result.
